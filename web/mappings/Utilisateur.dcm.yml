@@ -1,0 +1,21 @@
+Utilisateur:
+    type: entity
+    table: utilisateurs
+    repositoryClass: UtilisateurRepository
+    id:
+         idUtilisateur:
+             type: integer
+             nullable: false
+             id: true
+             column: id_utilisateur
+             generator:
+                 strategy: IDENTITY
+    fields:
+        login:
+            type: string
+            nullable: false
+            length: 255
+        password:
+            type: string
+            nullable: false
+            length: 255

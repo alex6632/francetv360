@@ -1,0 +1,26 @@
+{
+  "name": "francetv360",
+  "version": "1.0.0",
+  "description": "France•TV360 est un outil nouveau qui vous permet d'explorer l'information de manière ludique",
+  "main": "Gulpfile.js",
+  "private": true,
+  "scripts": {
+    "test": "gulp watch",
+    "watch": "gulp watch",
+    "dev": "gulp web-dev",
+    "prod": "gulp dist-prod"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alex6632/francetv360"
+  },
+  "author": "Alexandre Simonin",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "^2.4.0"
+  }
+}

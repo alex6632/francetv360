@@ -1,0 +1,56 @@
+// _c-map.scss
+
+.water {
+  fill: color(secondary, 'blue');
+}
+
+.land {
+  fill: #a98b6f;
+  stroke: color(background);
+  stroke-width: 0.7px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.infoTooltip {
+  position: absolute;
+  width: 200px;
+  height: 70px;
+  background-color: color(background);
+  padding: 10px;
+  text-align: center;
+
+  &__title {
+    display: block;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+
+  &__img {
+    max-width: 200px;
+    max-height: 50px;
+    width: auto;
+    height: auto;
+    margin: auto;
+  }
+}
+
+.modalInfo {
+  display: none;
+  position: fixed;
+  padding: 10px;
+  top: 5%;
+  left: 5%;
+  width: 90%;
+  height: 90%;
+  background-color: color(background);
+  box-shadow: 0px 0px 10px 1px rgba(color('gray', middle),1);
+}
+
+.jsCloseModalInfo {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}

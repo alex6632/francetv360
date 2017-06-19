@@ -1,5 +1,5 @@
 <?php
-$page = 'map';
+$page = 'home';
 $layout = 'default';
 $controller = '';
 

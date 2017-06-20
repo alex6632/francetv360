@@ -7,8 +7,7 @@ var width = 500,
     height = 500,
     sens = 0.25,
     scale = 1,
-    margin = {top: 0, right: 0, bottom: 0, left: 0},
-    focused;
+    margin = {top: 0, right: 0, bottom: 0, left: 0};
 
 //Setting projection
 var proj = d3.geo.orthographic()
@@ -29,7 +28,8 @@ var zoom = d3.behavior.zoom()
 //SVG container
 var svg = d3.select("body").append("svg")
     .attr("width", width)
-    .attr("height", height);
+    .attr("height", height)
+    .attr("class", "map");
 
 var g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.right + ")").call(zoom)
     .on("mousedown.zoom", null)
@@ -41,6 +41,7 @@ var infoTooltip = d3.select("body").append("div").attr("class", "infoTooltip");
 var modalInfo = d3.select("div.modalInfo");
 
 queue()
+    //.defer(d3.json, "../data/world-110m.json")
     .defer(d3.json, "../data/world-110m.json")
     .defer(d3.json, "../data/marker.json")
     .await(ready);
@@ -66,7 +67,38 @@ function ready(error, world, locations) {
     var water = g.append('path')
         .datum({type: 'Sphere'})
         .attr('class', 'water')
-        .attr('d', path);
+        .attr('d', path)
+        .call(d3.behavior.drag()
+            .origin(function() {
+                var r = proj.rotate();
+                return {x: r[0] / sens, y: -r[1] / sens}; })
+            .on('drag', function(d) {
+                var rotate = proj.rotate();
+                proj.rotate([d3.event.x * sens, -d3.event.y * sens, rotate[2]]);
+                g.selectAll('.land').attr('d', path);
+
+                // for each node
+                nodes.each(function(d, i) {
+                    var self = d3.select(this),
+                        lon_lat = [d.lon, d.lat],
+                        proj_pos = proj(lon_lat);
+
+                    var hasPath = path({
+                            type: "Point",
+                            coordinates: lon_lat
+                        }) != undefined;
+
+                    if (hasPath) {
+                        self.style("display","inline");
+                        self.attr("transform", 'translate(' + proj_pos[0] + ',' + proj_pos[1] + ')');
+                    }
+
+                    else {
+                        self.style("display","none")
+                    }
+                });
+            })
+        );
 
     g.selectAll('g.land')
         .data(topojson.feature(world, world.objects.countries).features)
@@ -85,8 +117,8 @@ function ready(error, world, locations) {
                 // for each node
                 nodes.each(function(d, i) {
                     var self = d3.select(this),
-                        lon_lat = [d.lon, d.lat];
-                    proj_pos = proj(lon_lat);
+                        lon_lat = [d.lon, d.lat],
+                        proj_pos = proj(lon_lat);
 
                     // check to see if it's still visible
                     var hasPath = path({

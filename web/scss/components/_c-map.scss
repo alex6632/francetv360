@@ -1,5 +1,11 @@
 // _c-map.scss
 
+.map {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
 .water {
   fill: color(secondary, 'blue');
 }
@@ -8,10 +14,6 @@
   fill: #a98b6f;
   stroke: color(background);
   stroke-width: 0.7px;
-
-  &:hover {
-    cursor: pointer;
-  }
 }
 
 .infoTooltip {

@@ -49,7 +49,7 @@ gulp.task('scripts', function () {
  * Copy app.css to destination folder
  */
 gulp.task('style-prod', function () {
-    gulp.src(DIR.src + '/app/css/app.css')
+    gulp.src(DIR.src + '/app/css/*.css')
         .pipe(gulp.dest(DIR.dest + '/app/css/'));
 });
 
@@ -58,7 +58,7 @@ gulp.task('style-prod', function () {
  * Copy app.js to destination folder
  */
 gulp.task('script-prod', function () {
-    gulp.src(DIR.src + '/app/js/app.js')
+    gulp.src(DIR.src + '/app/js/*.js')
         .pipe(gulp.dest(DIR.dest + '/app/js/'));
 });
 
@@ -67,7 +67,7 @@ gulp.task('script-prod', function () {
  * Copy php files to destination folder
  */
 gulp.task('files', function () {
-    gulp.src(DIR.src + '**/*.+(php|json)')
+    gulp.src(DIR.src + '/**/**/*.+(php|json)')
         .pipe(gulp.dest(DIR.dest));
 });
 

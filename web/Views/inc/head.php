@@ -9,7 +9,7 @@
     <?php if($template == 'home') { ?>
         <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
-        <link type="text/css" rel="stylesheet" href="css/hackIT.css"  media="screen,projection"/>
+        <link type="text/css" rel="stylesheet" href="app/css/home.css"  media="screen,projection"/>
     <?php } else { ?>
         <link rel="stylesheet" href="app/css/app.css">
     <?php } ?>

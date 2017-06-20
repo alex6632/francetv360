@@ -2,10 +2,16 @@
 
 html,
 body {
-
+	font-family: font(primary);
+	background: url('../../images/bg.jpg');
+	background-size: cover;
 }
 
 .container {
-	width: 1200px;
+	width: 1090px;
 	margin: auto;
+}
+
+.mg-top {
+	margin-top: 80px;
 }

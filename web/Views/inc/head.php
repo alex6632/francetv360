@@ -11,6 +11,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
         <link type="text/css" rel="stylesheet" href="app/css/home.css"  media="screen,projection"/>
     <?php } else { ?>
+        <link href="https://fonts.googleapis.com/css?family=Rajdhani:300,400,500,600,700" rel="stylesheet">
         <link rel="stylesheet" href="app/css/app.css">
     <?php } ?>
 

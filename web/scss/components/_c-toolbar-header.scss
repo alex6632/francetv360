@@ -1,0 +1,34 @@
+// _c-toolbar-header.scss
+
+.toolbar-header {
+  float: right;
+
+  .icon-search,
+  .icon-help,
+  .icon-profile {
+    position: relative;
+    float: left;
+    width: 46px; height: 46px;
+    cursor: pointer;
+
+    img {
+      @include center-h-v(absolute);
+    }
+  }
+
+  .icon-search {
+  }
+  .icon-help {
+  }
+
+  .icon-profile {
+    width: 46px; height: 46px;
+    border-radius: 100%;
+    overflow: hidden;
+    margin-left: 10px;
+
+    img {
+      max-width: 100%;
+    }
+  }
+}

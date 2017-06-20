@@ -3,15 +3,15 @@
  */
 
 //Init
-var width = 500,
-    height = 500,
+var width = 1000,
+    height = 600,
     sens = 0.25,
     scale = 1,
     margin = {top: 0, right: 0, bottom: 0, left: 0};
 
 //Setting projection
 var proj = d3.geo.orthographic()
-    .scale(245)
+    .scale(190)
     .rotate([0, 0])
     .translate([width / 2, height / 2])
     .clipAngle(90);
@@ -22,7 +22,7 @@ var path = d3.geo.path().projection(proj).pointRadius(function(d) {
 
 //Zoom
 var zoom = d3.behavior.zoom()
-    .scaleExtent([1, 10])
+    .scaleExtent([1, 2])
     .on("zoom", zoomed);
 
 //SVG container
@@ -36,6 +36,25 @@ var g = svg.append("g").attr("transform", "translate(" + margin.left + "," + mar
     .on("touchstart.zoom", null)
     .on("touchmove.zoom", null)
     .on("touchend.zoom", null);
+
+//Add gradient on water
+var defs = svg.append("defs");
+var gradient = defs.append("linearGradient")
+    .attr("id", "gradient")
+    .attr("x1","0")
+    .attr("x2","1")
+    .attr("y1","0")
+    .attr("y2","1");
+gradient.append("stop")
+    .attr("offset", "0%")
+    .attr("stop-color", "#000")
+    .attr("stop-opacity", "0.16");
+gradient.append("stop")
+    .attr("offset", "100%")
+    .attr("stop-color", "#FFF")
+    .attr("stop-opacity", "0.16");
+
+// background: -webkit-linear-gradient(-45deg, rgba(0,0,0,0.16) 0%,rgba(255,255,255,0.16) 100%);
 
 var infoTooltip = d3.select("body").append("div").attr("class", "infoTooltip");
 var modalInfo = d3.select("div.modalInfo");
@@ -173,9 +192,9 @@ function ready(error, world, locations) {
         });
 
     nodes.append("svg:image")
-        .attr('transform', 'translate(-24, -20)')
-        .attr('width', 20)
-        .attr('height', 24)
+        .attr('transform', 'translate(-7, -7)')
+        .attr('width', 7)
+        .attr('height', 7)
         .classed('white',true)
-        .attr("href","../images/marker.svg");
+        .attr("href","../images/marker.png");
 }

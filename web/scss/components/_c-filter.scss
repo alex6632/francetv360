@@ -6,9 +6,18 @@
   @include center-v(absolute);
   z-index: 99;
 
+  .mCSB_scrollTools {
+    left: -5px !important;
+    right: auto !important;
+  }
+  .mCustomScrollBox {
+    padding-left: 50px;
+  }
+
   &__item {
     float: left;
     width: 50%; height: 50px;
+    cursor: pointer;
   }
 
   label {

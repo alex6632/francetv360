@@ -1,0 +1,35 @@
+// _c-footer-map.scss
+
+.footer-map {
+  position: absolute;
+  width: 1090px;
+  bottom: 60px;
+
+  .network {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 999;
+
+    &__link {
+      margin: 0 10px;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  &__right {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 999;
+
+    a {
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}

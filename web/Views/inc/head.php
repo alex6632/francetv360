@@ -12,8 +12,12 @@
         <link type="text/css" rel="stylesheet" href="app/css/home.css"  media="screen,projection"/>
     <?php } else { ?>
         <link href="https://fonts.googleapis.com/css?family=Rajdhani:300,400,500,600,700" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.1.8/css/ion.rangeSlider.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.css">
         <link rel="stylesheet" href="app/css/app.css">
     <?php } ?>
 
     <title>France•TV360</title>
 </head>
+
+<body>

@@ -16,6 +16,12 @@ var proj = d3.geo.orthographic()
     .translate([width / 2, height / 2])
     .clipAngle(90);
 
+var markerProj = d3.geo.orthographic()
+    .scale(190)
+    .rotate([0, 0])
+    .translate([width / 2, height / 2])
+    .clipAngle(90);
+
 var path = d3.geo.path().projection(proj).pointRadius(function(d) {
     return 6
 });
@@ -26,12 +32,12 @@ var zoom = d3.behavior.zoom()
     .on("zoom", zoomed);
 
 //SVG container
-var svg = d3.select("body").append("svg")
+var svg = d3.select("body .home-map").append("svg")
     .attr("width", width)
     .attr("height", height)
     .attr("class", "map");
 
-var g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.right + ")").call(zoom)
+var g = svg.append("g").call(zoom)
     .on("mousedown.zoom", null)
     .on("touchstart.zoom", null)
     .on("touchmove.zoom", null)
@@ -54,15 +60,19 @@ gradient.append("stop")
     .attr("stop-color", "#FFF")
     .attr("stop-opacity", "0.16");
 
-// background: -webkit-linear-gradient(-45deg, rgba(0,0,0,0.16) 0%,rgba(255,255,255,0.16) 100%);
-
 var infoTooltip = d3.select("body").append("div").attr("class", "infoTooltip");
 var modalInfo = d3.select("div.modalInfo");
 
+var scrollSpeed = 50;
+var current = 0;
+var λ = d3.scale.linear()
+    .domain([0, width])
+    .range([-180, 180]);
+
 queue()
-    //.defer(d3.json, "../data/world-110m.json")
     .defer(d3.json, "../data/world-110m.json")
     .defer(d3.json, "../data/marker.json")
+    .defer(d3.tsv, "../data/filter-names.tsv")
     .await(ready);
 
 
@@ -76,11 +86,39 @@ function zoomed() {
 }
 
 //Main function
-function ready(error, world, locations) {
+function ready(error, world, locations, filters) {
 
     $('.modalInfo').on('click', '.jsCloseModalInfo', function() {
-        $(this).parent('.modalInfo').css("display", "none");
+        $(this).parent('.modalInfo').fadeOut();
+        $('.home-map').css({
+            left: "50%",
+            transition: "all 800ms 800ms ease",
+            zIndex: 9
+        });
+        $('.timeline').css({
+            transform: "translate(-50%, 0%)",
+            opacity: 1,
+            transition: "all 800ms 800ms ease"
+        });
+        $('.filter').css({
+            transform: "translate(0, -50%)",
+            opacity: 1,
+            transition: "all 800ms 800ms ease"
+        });
+        $('.data-right').css({
+            transform: "translate(0, -50%)",
+            opacity: 1,
+            transition: "all 800ms 800ms ease"
+        });
+        $('.toolbar-header').css({
+            display: "block"
+        });
     });
+    // $('svg.map > g').hover(function() {
+    //     clearInterval(vAutoRotate);
+    // }, function() {
+    //     setInterval(bgscroll, 50);
+    // });
 
     //Adding water
     var water = g.append('path')
@@ -92,6 +130,7 @@ function ready(error, world, locations) {
                 var r = proj.rotate();
                 return {x: r[0] / sens, y: -r[1] / sens}; })
             .on('drag', function(d) {
+                clearInterval(vAutoRotate);
                 var rotate = proj.rotate();
                 proj.rotate([d3.event.x * sens, -d3.event.y * sens, rotate[2]]);
                 g.selectAll('.land').attr('d', path);
@@ -119,8 +158,9 @@ function ready(error, world, locations) {
             })
         );
 
+    var countries = topojson.feature(world, world.objects.countries).features;
     g.selectAll('g.land')
-        .data(topojson.feature(world, world.objects.countries).features)
+        .data(countries)
         .enter().append('path')
         .attr('class', 'land')
         .attr('d', path)
@@ -129,6 +169,7 @@ function ready(error, world, locations) {
                 var r = proj.rotate();
                 return {x: r[0] / sens, y: -r[1] / sens}; })
             .on('drag', function(d) {
+                clearInterval(vAutoRotate);
                 var rotate = proj.rotate();
                 proj.rotate([d3.event.x * sens, -d3.event.y * sens, rotate[2]]);
                 g.selectAll('.land').attr('d', path);
@@ -168,10 +209,31 @@ function ready(error, world, locations) {
         })
         .attr('style', 'cursor: pointer')
         .attr("d", path)
+        .attr('class', function(d) {
+            var category = d.category,
+                inputCategory,
+                myClass;
+            d3.selectAll(".filter__item input").each(function(d){
+                cb = d3.select(this);
+                if(cb.property("checked")){
+                    inputCategory = cb.property("id");
+                }
+            });
+
+            if(category == inputCategory) {
+                myClass = 'node show';
+                if(category == 6) {
+                    myClass += ' live';
+                }
+                return myClass;
+            } else {
+                return 'node hide';
+            }
+        })
         .on('mouseover', function(d) {
-            infoTooltip.html("<div class='infoTooltip__title'>"+d.name+"</div><img src='img/dist/"+d.img+"' alt='' class='infoTooltip__img'>")
-                .style("left", (d3.event.pageX - 110) + "px")
-                .style("top", (d3.event.pageY - 100) + "px")
+            infoTooltip.html("<img src='images/"+d.image+"' alt='' class='infoTooltip__img'><div class='infoTooltip__title'>"+d.name+"</div>")
+                .style("left", (d3.event.pageX + 20) + "px")
+                .style("top", (d3.event.pageY - 50) + "px")
                 .style("display", "block")
                 .style("opacity", 1);
         })
@@ -180,21 +242,110 @@ function ready(error, world, locations) {
                 .style("display", "none");
         })
         .on("mousemove", function(d) {
-            infoTooltip.style("left", (d3.event.pageX - 110) + "px")
-                .style("top", (d3.event.pageY - 100) + "px");
+            infoTooltip.style("left", (d3.event.pageX + 20) + "px")
+                .style("top", (d3.event.pageY - 50) + "px");
         })
         .on("click", function(d) {
-            var modalInfo__title = d3.select("div.modalInfo__title");
-            var modalInfo__video = d3.select("div.modalInfo__video");
+            var mainPage = d3.select(".main-page");
+            var modalInfo__title = d3.select("div.modalInfo__inner__title");
+            var modalInfo__video = d3.select("div.modalInfo__inner__video");
             modalInfo__title.html(d.name);
             modalInfo__video.html("<iframe width='560' height='315' src='https://www.youtube.com/embed/"+d.token+"' frameborder='0' allowfullscreen></iframe>");
-            modalInfo.style("display", "block");
+            d3.select(".timeline")
+                .style("opacity", "0")
+                .style("transform", "translate(-50%, 400%)")
+                .style("transition", "all 800ms ease");
+            d3.select(".filter")
+                .style("opacity", "0")
+                .style("transform", "translate(-100%, -50%)")
+                .style("transition", "all 800ms ease");
+            d3.select(".data-right")
+                .style("opacity", "0")
+                .style("transform", "translate(100%, -50%)")
+                .style("transition", "all 800ms ease");
+            d3.select(".toolbar-header")
+                .style("display", "none");
+            d3.select(".home-map")
+                .style("left", "0")
+                .style("transition", "all 800ms ease")
+                .style("z-index", "999");
+            $('.modalInfo').delay(1000).fadeIn();
         });
 
-    nodes.append("svg:image")
-        .attr('transform', 'translate(-7, -7)')
-        .attr('width', 7)
-        .attr('height', 7)
-        .classed('white',true)
-        .attr("href","../images/marker.png");
+    if($('.node').hasClass('live')) {
+        nodes.append("svg:image")
+            .attr('transform', 'translate(-7, -7)')
+            .attr('width', 7)
+            .attr('height', 7)
+            .attr('class','marker')
+            .attr("href","../images/marker-live.png");
+    } else {
+        nodes.append("svg:image")
+            .attr('transform', 'translate(-7, -7)')
+            .attr('width', 7)
+            .attr('height', 7)
+            .attr('class','marker')
+            .attr("href","../images/marker.png");
+    }
+
+    d3.selectAll(".filter__item input").on("change", function(d){
+        var selected = this.id,
+            opacity = this.checked ? 1 : 0;
+
+        if(selected == 6) {
+            nodes
+                .filter(function(d) {
+                    return selected == d.category;
+                })
+                .style('opacity', opacity)
+                .append("svg:image")
+                .attr('transform', 'translate(-7, -7)')
+                .attr('width', 7)
+                .attr('height', 7)
+                .attr('class','marker')
+                .attr("href","../images/marker-live.png");
+        } else {
+            nodes
+                .filter(function(d) {
+                    return selected == d.category;
+                })
+                .style('opacity', opacity)
+                .append("svg:image")
+                .attr('transform', 'translate(-7, -7)')
+                .attr('width', 7)
+                .attr('height', 7)
+                .attr('class','marker')
+                .attr("href","../images/marker.png");
+        }
+    });
+
+    function bgscroll() {
+        current += 1;
+        proj.rotate([λ(current), 0]);
+        markerProj.rotate([λ(current), 0]);
+        g.selectAll('.land').attr('d', path);
+        nodes
+            .attr('transform', function(d) {
+                var proj_pos = proj([d.lon, d.lat]);
+                return 'translate(' + proj_pos[0] + ',' + proj_pos[1] + ')';
+            })
+            .attr("display", function(d) {
+                var lon_lat = [d.lon, d.lat],
+                    proj_pos = proj(lon_lat);
+
+                var hasPath = path({
+                        type: "Point",
+                        coordinates: lon_lat
+                    }) != undefined;
+
+                if (hasPath) {
+                    return "inline";
+                }
+
+                else {
+                    return "none";
+                }
+            })
+    }
+    var vAutoRotate = setInterval(bgscroll, scrollSpeed);
 }

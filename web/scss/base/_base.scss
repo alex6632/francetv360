@@ -1,9 +1,8 @@
 // _base.scss
 
-html,
 body {
 	font-family: font(primary);
-	background: url('../../images/bg.jpg');
+	background: url('../../images/bg.jpg') no-repeat fixed;
 	background-size: cover;
 }
 
@@ -13,5 +12,5 @@ body {
 }
 
 .mg-top {
-	margin-top: 80px;
+	margin-top: 60px;
 }

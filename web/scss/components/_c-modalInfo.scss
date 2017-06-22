@@ -1,0 +1,181 @@
+// _c-modalInfo.scss
+
+// ------------------ A supprimer ------------------
+//.timeline,
+//.filter,
+//.data-right,
+//.toolbar-header,
+//.home-map {
+//  display: none;
+//}
+// ------------------ A supprimer ------------------
+
+.modalInfo {
+  display: none;
+  position: absolute;
+  padding: 10px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  .jsCloseModalInfo {
+    position: absolute;
+    right: 60px; top: 60px;
+    width: 22px; height: 22px;
+    background: url('../../images/close.png');
+    cursor: pointer;
+  }
+
+  &__inner {
+    width: 420px;
+    @include center-h-v(absolute);
+
+    &__title {
+      float: left;
+      width: 80%;
+      font-weight: 700;
+      font-size: 29px;
+      color: color(foreground, invert);
+    }
+    &__time {
+      position: relative;
+      float: right;
+      width: 20%;
+      color: rgba(color(foreground, invert),.4);
+      text-align: right;
+      top: 12px;
+      font-family: font(secondary);
+      font-size: 12px;
+    }
+    &__desc-top {
+      overflow: hidden;
+      margin-bottom: 8px;
+    }
+    &__desc {
+      p {
+        font-size: 13px;
+        color: color('gray', dark);
+        margin-bottom: 15px;
+        line-height: 20px;
+
+        .sep {
+          display: inline-block;
+          vertical-align: middle;
+          position: relative;
+          width: 2px; height: 2px;
+          background-color: color('gray', dark);
+          margin: 0 5px 0 10px;
+        }
+      }
+    }
+    &__video {
+      position: relative;
+      margin-top: 10px;
+
+      iframe {
+        top: 0; left: 0;
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
+  &__header {
+    overflow: hidden;
+
+    .whishlist {
+      float: left;
+      color: rgba(color(foreground, invert),.4);
+      text-transform: uppercase;
+      font-family: font(secondary);
+      font-weight: 500;
+      font-size: 12px;
+      @include transition();
+
+      &:hover {
+        color: rgba(color(foreground, invert),1);
+        cursor: pointer;
+        @include transition();
+      }
+
+      &::before {
+        display: inline-block;
+        vertical-align: middle;
+        content: "";
+        width: 9px; height: 13px;
+        background: url("../../images/wishlist.png");
+        margin-right: 5px;
+      }
+    }
+    .network {
+      float: right;
+
+      a {
+        margin: 0 6px;
+        &:hover {
+          cursor: pointer;
+        }
+        img {
+          opacity: .4;
+          @include transition();
+        }
+        &:hover img {
+          opacity: 1;
+          @include transition();
+        }
+      }
+    }
+  }
+
+  .modalInfo-related {
+    width: 145px;
+    height: 400px;
+    right: 90px;
+    @include center-v(absolute);
+
+    &__title {
+      color: color(foreground, invert);
+      font-size: 16px;
+      margin-bottom: 35px;
+    }
+    &__list {
+      &__item {
+        list-style: none;
+        margin-bottom: 12px;
+
+        img {
+          max-width: 100%;
+          height: auto;
+          margin-bottom: 6px;
+        }
+
+        &__name {
+          color: color(foreground, invert);
+          font-size: 15px;
+          margin-bottom: 4px;
+        }
+        &__desc {
+          color: color('gray', dark);
+          font-size: 14px;
+
+          .sep {
+            display: inline-block;
+            vertical-align: middle;
+            position: relative;
+            width: 2px; height: 2px;
+            background-color: color('gray', dark);
+            margin: 0 5px;
+          }
+        }
+      }
+    }
+    .more {
+      position: relative;
+      background: color('gray', middle) url('../../images/more.png') no-repeat center center;
+      width: 24px; height: 24px;
+      border-radius: 100%;
+      margin: 40px auto 0 auto;
+    }
+  }
+}

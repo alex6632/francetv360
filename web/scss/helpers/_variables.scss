@@ -11,10 +11,11 @@ $wrapper-width: 1200px;
 $color-key: 'base' !default;
 $colors: (
   'primary': (
-    'red': #C10519,
+    'base': #C10519,
   ),
   'secondary': (
     'purple': #6911CB,
+    'purple-dark': #1c175f,
     'blue': #2772FB,
   ),
   'foreground': (

@@ -3,7 +3,7 @@
 .data-right {
   width: 33%; height: 250px;
   @include center-v(absolute);
-  padding-left: 50px;
+  padding: 0 50px;
   right: 0;
   z-index: 99;
 
@@ -14,7 +14,6 @@
     &--big {
       display: inline-block;
       vertical-align: middle;
-      width: 59%;
       font-size: 60px;
 
       &::after {
@@ -40,7 +39,7 @@
     &__right {
       display: inline-block;
       vertical-align: middle;
-      width: 39%;
+      margin-left: 25px;
 
       img {
         display: block;

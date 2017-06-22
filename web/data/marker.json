@@ -2,22 +2,49 @@
   {
     "name": "Bande Annonce été 2017 - France TV Sport",
     "token": "TZhNqS5oxRU",
+    "image": "img1.jpg",
     "lat": 62.782176,
     "lon": 54.3214,
-    "category": "film"
+    "category": 2
   },
   {
     "name": "Automobile : Le Mans, à 24 heures des 24 heures",
     "token": "DUzXMMqHrSA",
+    "image": "img1.jpg",
     "lat": -61.007975,
     "lon": -5.05281,
-    "category": "sport"
+    "category": 2
   },
   {
     "name": "La natation française prend-elle l'eau ?",
     "token": "e5L1pBCv_As",
+    "image": "img1.jpg",
     "lat": -78.166262,
     "lon": 45.320536,
-    "category": "enfants"
+    "category": 2
+  },
+  {
+    "name": "Reportage",
+    "token": "e5L1pBCv_As",
+    "image": "img1.jpg",
+    "lat": -98.166262,
+    "lon": 45.320536,
+    "category": 4
+  },
+  {
+    "name": "Live test 1",
+    "token": "e5L1pBCv_As",
+    "image": "img1.jpg",
+    "lat": 48.862226,
+    "lon": 2.358885,
+    "category": 6
+  },
+  {
+    "name": "Live test 2",
+    "token": "e5L1pBCv_As",
+    "image": "img1.jpg",
+    "lat": 43.297113,
+    "lon": 5.366685,
+    "category": 6
   }
 ]

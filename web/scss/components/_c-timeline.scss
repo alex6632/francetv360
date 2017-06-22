@@ -1,0 +1,92 @@
+// _c-timeline.scss
+
+.timeline {
+  @include center-h(absolute);
+  width: 50%;
+  bottom: 0;
+  transition: all 500ms ease;
+  z-index: 99;
+
+  .live {
+    position: absolute;
+    right: 0; top: -30px;
+    display: inline-block;
+    font-family: font(secondary);
+    font-weight: 400;
+    text-transform: uppercase;
+    color: color(foreground, invert);
+
+    span {
+      display: inline-block;
+      vertical-align: middle;
+      width: 6px; height: 6px;
+      background-color: color(primary);
+      margin-left: 2px;
+      border-radius: 100%;
+    }
+  }
+
+  .irs {
+    height: 40px;
+
+    &-single {
+      position: relative;
+      width: 15px; height: 15px;
+      border-radius: 100%;
+      background-color: color(background);
+      color: color(foreground, invert);
+      font-size: 0;
+      text-indent: -999px;
+      top: -8px;
+      z-index: 99;
+
+      &::before,
+      &::after {
+        @include center-v(absolute);
+        display: block;
+        content: "";
+        width: 4px; height: 5px;
+      }
+      &::before {
+        left: 4px;
+        background: url('../../images/arrow-left.png') no-repeat;
+      }
+      &::after{
+        right: 4px;
+        background: url('../../images/arrow-right.png') no-repeat;
+      }
+    }
+  }
+  .irs-line {
+    height: 3px;
+    background-color: rgba(color(background),.1);
+  }
+  .irs-grid {
+    &-pol {
+      display: none;
+      background-color: color(background);
+    }
+    &-text {
+      color: color(foreground, invert);
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0; left: 60px;
+        width: 1px; height: 7px;
+        background-color: rgba(color(background),.2);
+      }
+
+      &.js-grid-text-6 {
+        &::after {
+          display: none;
+        }
+      }
+    }
+  }
+  .irs-bar {
+    top: 0;
+    height: 3px;
+    background-color: color(background);
+  }
+}

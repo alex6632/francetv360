@@ -10,6 +10,7 @@
     float: left;
     width: 46px; height: 46px;
     cursor: pointer;
+    z-index: 99;
 
     img {
       @include center-h-v(absolute);

@@ -9,14 +9,11 @@
         <div class="filter__item"><input type="checkbox" id="6" checked="checked"><label for="6">Live</label></div>
         <div class="filter__item"><input type="checkbox" id="7"><label for="7" class="two-lines">Vie<br>quotidienne</label></div>
         <div class="filter__item"><input type="checkbox" id="8"><label for="8">Enfants</label></div>
-
-        <div class="filter__item"><input type="checkbox" id="9"><label for="9">Test 1</label></div>
-        <div class="filter__item"><input type="checkbox" id="10"><label for="10">Test 2</label></div>
-        <div class="filter__item"><input type="checkbox" id="test3"><label for="test3">Test 3</label></div>
-        <div class="filter__item"><input type="checkbox" id="test4"><label for="test4">Test 4</label></div>
-        <div class="filter__item"><input type="checkbox" id="test5"><label for="test5">Test 5</label></div>
-        <div class="filter__item"><input type="checkbox" id="test6"><label for="test6">Test 6</label></div>
-        <div class="filter__item"><input type="checkbox" id="test7"><label for="test7">Test 7</label></div>
+        <div class="filter__item"><input type="checkbox" id="9"><label for="9">Reportage</label></div>
+        <div class="filter__item"><input type="checkbox" id="10"><label for="10">Monde</label></div>
+        <div class="filter__item"><input type="checkbox" id="11"><label for="11">Divertissement</label></div>
+        <div class="filter__item"><input type="checkbox" id="12"><label for="12">Politique</label></div>
+        <div class="filter__item"><input type="checkbox" id="13"><label for="13">France</label></div>
     </div>
     <!-- Data right block -->
     <div class="data-right">

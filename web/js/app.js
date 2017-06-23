@@ -114,6 +114,9 @@ function ready(error, world, locations, filters) {
             display: "block"
         });
     });
+    $('.jsPlayRotateGlobe').click(function() {
+        setInterval(bgscroll, scrollSpeed);
+    });
     // $('svg.map > g').hover(function() {
     //     clearInterval(vAutoRotate);
     // }, function() {
@@ -231,7 +234,7 @@ function ready(error, world, locations, filters) {
             }
         })
         .on('mouseover', function(d) {
-            infoTooltip.html("<img src='images/"+d.image+"' alt='' class='infoTooltip__img'><div class='infoTooltip__title'>"+d.name+"</div>")
+            infoTooltip.html("<img src='images/apercu/"+d.image+"' alt='' class='infoTooltip__img'><div class='infoTooltip__title'>"+d.name+"</div>")
                 .style("left", (d3.event.pageX + 20) + "px")
                 .style("top", (d3.event.pageY - 50) + "px")
                 .style("display", "block")
@@ -251,6 +254,7 @@ function ready(error, world, locations, filters) {
             var modalInfo__video = d3.select("div.modalInfo__inner__video");
             modalInfo__title.html(d.name);
             modalInfo__video.html("<iframe width='560' height='315' src='https://www.youtube.com/embed/"+d.token+"' frameborder='0' allowfullscreen></iframe>");
+            proj.scale(190);
             d3.select(".timeline")
                 .style("opacity", "0")
                 .style("transform", "translate(-50%, 400%)")
@@ -278,14 +282,14 @@ function ready(error, world, locations, filters) {
             .attr('width', 7)
             .attr('height', 7)
             .attr('class','marker')
-            .attr("href","../images/marker-live.png");
+            .attr("href","../images/marker-live.svg");
     } else {
         nodes.append("svg:image")
             .attr('transform', 'translate(-7, -7)')
             .attr('width', 7)
             .attr('height', 7)
             .attr('class','marker')
-            .attr("href","../images/marker.png");
+            .attr("href","../images/marker.svg");
     }
 
     d3.selectAll(".filter__item input").on("change", function(d){
@@ -303,7 +307,7 @@ function ready(error, world, locations, filters) {
                 .attr('width', 7)
                 .attr('height', 7)
                 .attr('class','marker')
-                .attr("href","../images/marker-live.png");
+                .attr("href","../images/marker-live.svg");
         } else {
             nodes
                 .filter(function(d) {
@@ -315,7 +319,7 @@ function ready(error, world, locations, filters) {
                 .attr('width', 7)
                 .attr('height', 7)
                 .attr('class','marker')
-                .attr("href","../images/marker.png");
+                .attr("href","../images/marker.svg");
         }
     });
 
@@ -340,9 +344,7 @@ function ready(error, world, locations, filters) {
 
                 if (hasPath) {
                     return "inline";
-                }
-
-                else {
+                } else {
                     return "none";
                 }
             })

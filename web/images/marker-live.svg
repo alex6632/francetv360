@@ -3,11 +3,7 @@
 <svg version="1.1" id="Layer_2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 7.5 7.5" style="enable-background:new 0 0 7.5 7.5;" xml:space="preserve">
 <style type="text/css">
-	.st0{fill:url(#SVGID_1_);}
+	.st0{fill:#C10E19;}
 </style>
-<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="6.3798" y1="6.3798" x2="1.0946" y2="1.0946">
-	<stop  offset="0" style="stop-color:#6A00CD"/>
-	<stop  offset="1" style="stop-color:#1F6DFF"/>
-</linearGradient>
 <circle class="st0" cx="3.7" cy="3.7" r="3.7"/>
 </svg>

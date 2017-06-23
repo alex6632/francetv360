@@ -5,7 +5,8 @@
 
   .icon-search,
   .icon-help,
-  .icon-profile {
+  .icon-profile,
+  .icon-play {
     position: relative;
     float: left;
     width: 46px; height: 46px;
@@ -17,9 +18,10 @@
     }
   }
 
-  .icon-search {
-  }
-  .icon-help {
+  .icon-play {
+    img {
+      max-width: 22px;
+    }
   }
 
   .icon-profile {

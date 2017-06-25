@@ -34,7 +34,7 @@
             <p>Saison 9 <span class="sep"></span> Ep. 3</p>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu mi eget leo tincidunt interdum in sit amet nunc.</p>
         </div>
-        <a href="#full-episode" class="btn"><div class="line"></div>Full episode</a>
+        <a href="#full-episode" class="btn"><div class="line"></div>Épisode complet</a>
     </div>
 
     <div class="modalInfo-related">

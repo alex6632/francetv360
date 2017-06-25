@@ -2,11 +2,13 @@
 
 .toolbar-header {
   float: right;
+  width: 200px;
 
   .icon-search,
   .icon-help,
   .icon-profile,
-  .icon-play {
+  .icon-play,
+  .switch {
     position: relative;
     float: left;
     width: 46px; height: 46px;
@@ -16,6 +18,11 @@
     img {
       @include center-h-v(absolute);
     }
+  }
+
+  .switch {
+    padding: 11px 3px;
+    cursor: default;
   }
 
   .icon-play {

@@ -3,16 +3,25 @@
 .home-map {
   width: 1000px;
   height: 600px;
-  @include center-h-v(absolute);
+
+  &.didac {
+    @include center-h(absolute);
+    top: -110px;
+  }
+  &.home {
+    @include center-h-v(absolute);
+    @include transition();
+  }
 }
 
 .map {
   @include center-h-v(absolute);
   z-index: 9;
-  &:hover {
+
+  g {
     cursor: pointer;
   }
-  // show or not marker...
+
   .hide {
     opacity: 0;
   }

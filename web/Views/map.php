@@ -10,11 +10,10 @@
         <?php include_once 'inc/footer.php'; ?>
     </div>
 
-    <div class="home-map"></div>
+    <div class="loader"></div>
+    <div class="home-map home"></div>
 
     <?php include_once 'inc/search.php'; ?>
     <?php include_once 'inc/modal-info.php'; ?>
-
-    <!--<span class="element">Test typed.js</span>-->
 
 </div> <!-- /.main-page -->

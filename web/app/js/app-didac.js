@@ -1,3 +1,21 @@
+// Didacticiel
+$('.didacticiel__next').click(function() {
+    if( !$(this).hasClass('disabled') ) {
+        $('.didacticiel__prev').removeClass('disabled');
+        $(this).addClass('disabled');
+        $('.didacticiel__inner--p1').fadeOut();
+        $('.didacticiel__inner--p2').fadeIn();
+    }
+});
+$('.didacticiel__prev').click(function() {
+    if( !$(this).hasClass('disabled') ) {
+        $('.didacticiel__next').removeClass('disabled');
+        $(this).addClass('disabled');
+        $('.didacticiel__inner--p2').fadeOut();
+        $('.didacticiel__inner--p1').fadeIn();
+    }
+});
+
 /*
  * ---- Settings -----
  */
@@ -11,14 +29,14 @@ var width = 1000,
 
 //Setting projection
 var proj = d3.geo.orthographic()
-    //.scale(190)
-    .scale(190)
+//.scale(190)
+    .scale(130)
     .rotate([0, 0])
     .translate([width / 2, height / 2])
     .clipAngle(90);
 
 var markerProj = d3.geo.orthographic()
-    .scale(190)
+    .scale(130)
     .rotate([0, 0])
     .translate([width / 2, height / 2])
     .clipAngle(90);
@@ -86,6 +104,22 @@ function zoomed() {
     g.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
 }
 
+function resetZoom(value) {
+    g.transition().duration(750).attr("transform", "translate(50%,50%)scale("+value+")");
+}
+
+// ("transform", "translate(-100%,-50%)scale("+scale+")");
+function resetZoom2(x1, x2, scale) {
+    g
+        .transition()
+        .duration(750)
+        //.style("transform", "translate("+x1+"%,"+x2+"%)scale("+scale+")")
+        //.style("transition", "all 200ms ease");
+        .attr("transform", "translate("+x1+"%,"+x2+"%)scale("+scale+")");
+}
+
+
+
 //Main function
 function ready(error, world, locations, filters) {
 
@@ -119,6 +153,18 @@ function ready(error, world, locations, filters) {
     $('.jsPlayRotateGlobe').click(function() {
         setInterval(bgscroll, scrollSpeed);
     });
+    $('.jsCloseDidacticiel').click(function() {
+        //resetZoom2(-100, -70, 1.5);
+    });
+    $('.jsOpenDidacticiel').click(function() {
+        //resetZoom2(50, 50, 1);
+    });
+
+    // $('svg.map > g').hover(function() {
+    //     clearInterval(vAutoRotate);
+    // }, function() {
+    //     setInterval(bgscroll, 50);
+    // });
 
     //Adding water
     var water = g.append('path')
@@ -246,6 +292,13 @@ function ready(error, world, locations, filters) {
                 .style("top", (d3.event.pageY - 50) + "px");
         })
         .on("click", function(d) {
+            // if(g.attr("transform")) {
+            //     resetZoom2(-100, -50, 1.5);
+            // }
+            //console.log("current zoom : "+zoom.scale());
+            //console.log("current translate : "+zoom.translate());
+            //zoom.scale(1);
+            //g.transition().duration(750).call(zoom.scale, d3.zoomIdentity);
             var mainPage = d3.select(".main-page");
             var modalInfo__title = d3.select("div.modalInfo__inner__title");
             var modalInfo__video = d3.select("div.modalInfo__inner__video");

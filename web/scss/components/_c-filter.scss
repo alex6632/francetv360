@@ -2,7 +2,6 @@
 
 .filter {
   width: 33%; height: 250px;
-  padding-right: 50px;
   @include center-v(absolute);
   z-index: 99;
 

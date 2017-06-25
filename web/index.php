@@ -1,6 +1,6 @@
 <?php
-$page = 'home';
-$layout = 'default';
+$page = 'didacticiel';
+$layout = 'day';
 $controller = '';
 
 require_once 'bootstrap.php';

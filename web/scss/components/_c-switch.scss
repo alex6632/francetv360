@@ -1,0 +1,50 @@
+// _c-switch.scss
+
+.switch {
+  position: relative;
+  z-index: 9999;
+
+  &__submit {
+    display: none;
+  }
+
+  input {
+    display: none;
+  }
+  label {
+    position: relative;
+    width: 40px; height: 24px;
+
+    &::before,
+    &::after {
+      display: block;
+      content: '';
+    }
+    &::before {
+      position: absolute;
+      width: 40px; height: 24px;
+      background-color: rgba(color(background),.25);
+      border-radius: 15px;
+    }
+    &::after {
+      position: absolute;
+      left: 16px; top: 0;
+      width: 24px; height: 24px;
+      background: color(background) url('../../images/night.png') no-repeat center center;
+      border-radius: 50%;
+      @include transition();
+    }
+  }
+  input {
+    &:checked {
+      & + label {
+
+        &::after {
+          left: 0;
+          background: color(background) url('../../images/day.png') no-repeat center center;
+          @include transition();
+        }
+      }
+    }
+  }
+}

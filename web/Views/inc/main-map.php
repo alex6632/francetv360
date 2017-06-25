@@ -18,7 +18,7 @@
     <!-- Data right block -->
     <div class="data-right">
         <div class="data-right__top">
-            <div class="number number--big">2 604</div>
+            <div class="number number--big data-prog element-typed">zefze</div>
             <div class="data-right__top__right">
                 <img src="images/tv.png" alt="">
                 <div class="data-right__text">Programmes à explorer</div>
@@ -26,7 +26,7 @@
         </div>
         <div class="data-right__bottom">
             <div class="data-right__bottom__top">
-                <div class="number number--little">26 514</div>
+                <div class="number number--little data-explo element-typed"></div>
                 <img src="images/exploration.png" alt="">
             </div>
             <div class="data-right__text">Explorateurs france tv</div>

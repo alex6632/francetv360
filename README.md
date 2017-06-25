@@ -33,6 +33,7 @@ Compile dev
 -------
 // If you want to collaborate and run watch in the dev environment :
 ```shell
+gulp web-dev
 gulp watch
 ```
 _More tasks see: [Gruntfile.js](/Gruntfile.js)_

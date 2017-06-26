@@ -3,8 +3,12 @@
 body {
 	font-family: font(primary);
 	background: url('../../images/bg.jpg') no-repeat fixed;
-	//background: url('../../images/bg-day.jpg') no-repeat fixed;
 	background-size: cover;
+
+	&.day {
+		background: url('../../images/bg-day.jpg') no-repeat fixed;
+		background-size: cover;
+	}
 }
 
 .container {

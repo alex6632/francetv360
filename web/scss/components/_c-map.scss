@@ -38,7 +38,13 @@
   fill: rgba(color('gray', middle),0.1);
   stroke: rgba(0,0,0,0);
   stroke-width: 0.7px;
+
+  .day & {
+    fill: rgba(color(background),0.2);
+  }
 }
+
+
 
 .infoTooltip {
   position: absolute;

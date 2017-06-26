@@ -1,6 +1,7 @@
 <?php
 $page = 'didacticiel';
-$layout = 'day';
+$theme = '';
+$layout = 'default';
 $controller = '';
 
 require_once 'bootstrap.php';
@@ -8,6 +9,9 @@ require_once 'functions.php';
 
 if(!empty($_GET['p'])) {
     $page = $_GET['p'];
+}
+if(!empty($_GET['t'])) {
+    $theme = $_GET['t'];
 }
 
 $template = $page;

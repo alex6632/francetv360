@@ -20,14 +20,22 @@
         <div class="data-right__top">
             <div class="number number--big data-prog"></div>
             <div class="data-right__top__right">
-                <img src="images/tv.png" alt="">
+                <?php if($theme == 'day') { ?>
+                    <img src="images/tv-day.png" alt="">
+                <?php } else { ?>
+                    <img src="images/tv.png" alt="">
+                <?php } ?>
                 <div class="data-right__text">Programmes à explorer</div>
             </div>
         </div>
         <div class="data-right__bottom">
             <div class="data-right__bottom__top">
                 <div class="number number--little data-explo"></div>
-                <img src="images/exploration.png" alt="">
+                <?php if($theme == 'day') { ?>
+                    <img src="images/exploration-day.png" alt="">
+                <?php } else { ?>
+                    <img src="images/exploration.png" alt="">
+                <?php } ?>
             </div>
             <div class="data-right__text">Explorateurs france tv</div>
         </div>

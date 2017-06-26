@@ -122,4 +122,10 @@ $(document).ready(function() {
         }
     });
 
+    // false de base
+    $('#switch').on('change', function() {
+        console.log($('#switch').prop('checked'));
+        $('#jsSwitchForm').submit();
+    });
+
 });

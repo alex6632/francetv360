@@ -20,4 +20,4 @@
     <title>France•TV360</title>
 </head>
 
-<body>
+<body <?php if($theme == 'day') { echo 'class="day"'; } else { echo ''; } ?>>

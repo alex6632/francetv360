@@ -22,7 +22,8 @@
   label {
     position: relative;
     display: inline-block;
-    color: color('gray', dark);
+    //color: color('gray', dark);
+    color: rgba(color(foreground, invert),.25);
     padding: 16px 0 0 20px;
     width: 100%; height: 50px;
 

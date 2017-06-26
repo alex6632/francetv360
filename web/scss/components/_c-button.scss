@@ -24,6 +24,10 @@
       background-color: color(background);
       @include transition();
     }
+
+    .day & {
+      background-color: rgba(color(background),.1);
+    }
   }
   &::after {
     content: "";
@@ -43,9 +47,15 @@
     background: -webkit-linear-gradient(left, color(secondary, 'blue'), color(secondary, 'purple'));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+
     &::after {
       background: url("../../images/exploration.png");
       width: 10px; height: 11px;
+    }
+    .day & {
+      background: -webkit-linear-gradient(left, color(secondary, 'blue'), color(secondary, 'purple'));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
   }
 }

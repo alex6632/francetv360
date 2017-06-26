@@ -55,7 +55,8 @@
     &__desc {
       p {
         font-size: 13px;
-        color: color('gray', dark);
+        //color: color('gray', dark);
+        color: rgba(color(foreground, invert),.4);
         margin-bottom: 15px;
         line-height: 20px;
 
@@ -156,7 +157,7 @@
           margin-bottom: 4px;
         }
         &__desc {
-          color: color('gray', dark);
+          color: rgba(color(foreground, invert),.4);
           font-size: 14px;
 
           .sep {
@@ -164,7 +165,7 @@
             vertical-align: middle;
             position: relative;
             width: 2px; height: 2px;
-            background-color: color('gray', dark);
+            background-color: rgba(color(foreground, invert),.4);
             margin: 0 5px;
           }
         }

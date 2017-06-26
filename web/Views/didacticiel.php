@@ -29,7 +29,14 @@
 
             <div class="didacticiel__inner__cta">
                 <a href="#signin" class="btn btn--signin"><div class="line"></div>S'inscrire</a>
-                <a href="?p=map" class="btn"><div class="line"></div>Continuer sans s'inscrire</a>
+                <?php
+                    if($theme == 'day') {
+                        echo '<a href="?t=day&p=map" class="btn"><div class="line"></div>Continuer sans s\'inscrire</a>';
+                    } else {
+                        echo '<a href="?p=map" class="btn"><div class="line"></div>Continuer sans s\'inscrire</a>';
+                    }
+                ?>
+
             </div>
         </div>
 

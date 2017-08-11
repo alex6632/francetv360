@@ -31,7 +31,7 @@
                     <div class="icon-block">
                         <h2 class="center white-text"><i class="material-icons presentation-icons">explore</i></h2>
                         <h5 class="center">Explorer</h5>
-                        <p class="light center">FRANCE•TV 360 est un outil nouveau vous proposant d'explorer
+                        <p class="light center">FRANCE•TV 360 est un nouvel outil vous proposant d'explorer
                             l'information de manière ludique.</p>
                     </div>
                 </div>
@@ -41,7 +41,7 @@
                         <h2 class="center white-text"><i class="material-icons presentation-icons">3d_rotation</i></h2>
                         <h5 class="center">Intéragir</h5>
                         <p class="light center">À travers une modélisation 3D de notre planète, manipulez le globe pour
-                            trouver les points d'intérêts vous intéressant.</p>
+                            trouver les points d'intérêts qui vous correspondent.</p>
                     </div>
                 </div>
 
@@ -49,8 +49,8 @@
                     <div class="icon-block">
                         <h2 class="center white-text"><i class="material-icons presentation-icons">info</i></h2>
                         <h5 class="center">Informer</h5>
-                        <p class="light center">Sélectionnez le pin pour trouver le contenu correspondant. Vous pouvez
-                            partager à tout moment le contenu vous inspirant.</p>
+                        <p class="light center">Sélectionnez un marqueur pour trouver le contenu correspondant. Vous pouvez
+                            le partager à tout moment !</p>
                     </div>
                 </div>
             </div>
@@ -118,9 +118,11 @@
                     <div class="row">
                         <div class="col s12 m4">
                             <div class="icon-block">
-                                <div class="center white-text"><img src="images/home/jigme.jpg" class="people-picture"/>
+                                <div class="center white-text">
+                                    <img src="images/home/jigme.jpg" class="people-picture"/>
                                 </div>
                                 <h5 class="center">Jigme</h5>
+                                <p class="center">Web-Design</p>
                             </div>
                         </div>
 
